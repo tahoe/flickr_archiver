@@ -4,6 +4,7 @@ import sys, os, errno
 import time
 import datetime as dt
 import yaml
+import syslog
 
 
 ONEHOUR = 3600
@@ -52,7 +53,7 @@ pages = [a+1 for a in range(info.pages)]
 # loop through each page and re"get" the photos list object for the current page
 for i in pages:
     # show which page we are on
-    print("on page {}".format(i))
+    syslog.syslog(syslog.LOG_WARNING, "on page {}".format(i))
 
     # get the new photos list object for the current page
     pics = me.getPhotos(page=i)
@@ -68,24 +69,24 @@ for i in pages:
         if pic.media == 'photo':
             filepath = "{}.{}".format(filepath,"jpg")
             if os.path.exists(filepath):
-                print("Skipping file {} since we already have it".format(filepath))
+                syslog.syslog(syslog.LOG_WARNING, "Skipping file {} since we already have it".format(filepath))
                 continue
             try:
-                print("\tsaving {} to {}".format(pic.id, filepath))
+                syslog.syslog(syslog.LOG_WARNING, "\tsaving {} to {}".format(pic.id, filepath))
                 pic.save(filepath, size_label='Original')
             except Exception as e:
-                print("Got exception: {} for path {}".format(str(e), filepath))
+                syslog.syslog(syslog.LOG_WARNING, "Got exception: {} for path {}".format(str(e), filepath))
         elif pic.media == 'video':
             filepath = "{}.{}".format(filepath,"mp4")
             if os.path.exists(filepath):
-                print("Skipping file {} since we already have it".format(filepath))
+                syslog.syslog(syslog.LOG_WARNING, "Skipping file {} since we already have it".format(filepath))
                 continue
             try:
-                print("\tsaving {} to {}".format(pic.id, filepath))
+                syslog.syslog(syslog.LOG_WARNING, "\tsaving {} to {}".format(pic.id, filepath))
                 pic.save(filepath)
             except Exception as e:
-                print("Got exception: {} for path {}".format(str(e), filepath))
+                syslog.syslog(syslog.LOG_WARNING, "Got exception: {} for path {}".format(str(e), filepath))
         else:
-            print("wtf. id is {}, type is {}".format(pic.id, pic.media))
+            syslog.syslog(syslog.LOG_WARNING, "wtf. id is {}, type is {}".format(pic.id, pic.media))
 
 

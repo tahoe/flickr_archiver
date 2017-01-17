@@ -10,4 +10,5 @@ Also set up your config in ~/.flickr_archiver/config.yaml as such:
 api_sec: "your security key"
 api_key: "your api key"
 base_folder: "folder where you want to have us store your files"
+min_upload_hours: "number of hours to go back based on upload time"
 ```
