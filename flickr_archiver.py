@@ -47,6 +47,7 @@ me = flickr_api.test.login()
 # the info object has the total pages, current page and number of pages
 # we need to go through all the pages so we need the .pages attribute
 info = me.getPhotos(min_upload_date=min_upload_date, per_page=per_page).info
+syslog.syslog(syslog.LOG_WARNING, "Info is {}".format(info))
 
 # pages starts with fucking 1 of course so adjusting...
 pages = [a+1 for a in range(info.pages)]
@@ -58,7 +59,7 @@ for i in pages:
     syslog.syslog(syslog.LOG_WARNING, "on page {}".format(i))
 
     # get the new photos list object for the current page
-    pics = me.getPhotos(page=i)
+    pics = me.getPhotos(min_upload_date=min_upload_date, per_page=per_page, page=i)
 
     syslog.syslog(syslog.LOG_WARNING, "There are {} items on this page".format(len(pics)))
     # loop through each photo in the list
