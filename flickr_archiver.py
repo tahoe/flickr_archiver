@@ -27,6 +27,7 @@ def mkdir_p(path):
 # load api keys
 api_sec=config['api_sec']
 api_key=config['api_key']
+per_page=config['per_page']
 min_upload_date=time.time() - (config['min_upload_hours'] * ONEHOUR)
 base_folder=config['base_folder'].rstrip('/')
 
@@ -45,7 +46,7 @@ me = flickr_api.test.login()
 # getPhotos returns a special "list" that has an info object attached
 # the info object has the total pages, current page and number of pages
 # we need to go through all the pages so we need the .pages attribute
-info = me.getPhotos(min_upload_date=min_upload_date).info
+info = me.getPhotos(min_upload_date=min_upload_date, per_page=per_page).info
 
 # pages starts with fucking 1 of course so adjusting...
 pages = [a+1 for a in range(info.pages)]
