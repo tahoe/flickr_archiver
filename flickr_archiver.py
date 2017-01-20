@@ -50,6 +50,7 @@ info = me.getPhotos(min_upload_date=min_upload_date, per_page=per_page).info
 
 # pages starts with fucking 1 of course so adjusting...
 pages = [a+1 for a in range(info.pages)]
+syslog.syslog(syslog.LOG_WARNING, "There are {} pages".format(len(pages)))
 
 # loop through each page and re"get" the photos list object for the current page
 for i in pages:
