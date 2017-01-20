@@ -60,6 +60,7 @@ for i in pages:
     # get the new photos list object for the current page
     pics = me.getPhotos(page=i)
 
+    syslog.syslog(syslog.LOG_WARNING, "There are {} items on this page".format(len(pics)))
     # loop through each photo in the list
     for pic in pics:
         # just get the year/month/day
