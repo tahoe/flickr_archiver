@@ -76,7 +76,7 @@ for i in pages:
                 syslog.syslog(syslog.LOG_WARNING, "Skipping file {} since we already have it".format(filepath))
                 continue
             try:
-                syslog.syslog(syslog.LOG_WARNING, "\tsaving {} to {}".format(pic.id, filepath))
+                syslog.syslog(syslog.LOG_WARNING, "    saving {} to {}".format(pic.id, filepath))
                 pic.save(filepath, size_label='Original')
             except Exception as e:
                 syslog.syslog(syslog.LOG_WARNING, "Got exception: {} for path {}".format(str(e), filepath))
@@ -86,7 +86,7 @@ for i in pages:
                 syslog.syslog(syslog.LOG_WARNING, "Skipping file {} since we already have it".format(filepath))
                 continue
             try:
-                syslog.syslog(syslog.LOG_WARNING, "\tsaving {} to {}".format(pic.id, filepath))
+                syslog.syslog(syslog.LOG_WARNING, "    saving {} to {}".format(pic.id, filepath))
                 pic.save(filepath)
             except Exception as e:
                 syslog.syslog(syslog.LOG_WARNING, "Got exception: {} for path {}".format(str(e), filepath))
