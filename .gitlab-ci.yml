@@ -1,0 +1,10 @@
+before_script:
+  - python -V
+  - which python
+
+job:
+  script:
+    - echo "done"
+  tags:
+    - stable
+
