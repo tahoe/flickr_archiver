@@ -5,8 +5,8 @@ desc = open("readme.rst").read() if os.path.isfile("readme.rst") else ""
 
 
 setup(
-    name='flickr_archiver',
-    version='1.0.0.1',
+    name='flickr-archiver',
+    version='1.0.0.2',
     packages=['flickr_archiver'],
     url='https://github.com/tahoe/flickr_archiver/',
     download_url='https://github.com/tahoe/flickr_archiver/tarball/1.0.0.1',
