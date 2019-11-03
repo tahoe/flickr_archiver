@@ -29,7 +29,7 @@ setup(
     ],
     install_requires=[
         'flickr-api==0.5',
-        'PyYAML==3.12',
+        'PyYAML==5.1',
         'Faker==0.7.12',
     ],
     entry_points={
